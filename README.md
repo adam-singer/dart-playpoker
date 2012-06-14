@@ -1,5 +1,6 @@
 dart-playpoker
 ==============
+##Play poker with Dart!
 
   <p>This is just an experiment to become familiar with the new Dart programming language.</p>
   <p>It ain't supposed to be funny, educational, working fine, etc :-)</p>
