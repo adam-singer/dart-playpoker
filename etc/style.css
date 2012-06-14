@@ -1,0 +1,19 @@
+#table{
+-webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border-radius: 20px;
+background-color:green;
+border:10px solid #444;
+min-height:300px;
+text-align:center;
+}
+
+.playerName{
+color:white;
+font-size:x-large;
+float:left;
+margin-left:50px;
+width:150px;
+}
+
+.status{color:white;text-align:left;}
