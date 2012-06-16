@@ -17,3 +17,11 @@ width:150px;
 }
 
 .status{color:white;text-align:left;}
+
+#debug{
+max-height:123px;
+overflow-y:scroll;
+font-family:mono;
+background-color:black;
+color:#CCC;
+}

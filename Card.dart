@@ -1,7 +1,9 @@
 class Card {
   num s, r;
-  Card(num s, num r) {
-      this.s = s;
-      this.r = r;
-      }
+  Card(this.s,this.r);
+  String nameOfCard(){
+    var suiteNames = ['Clubs','Diamonds','Hearts','Spades'];
+    var rankNames = ['None', 'Ace', '2', '3', '4', '5', '6', '7','8', '9', '10', 'Jack', 'Queen', 'King'];
+    return '${rankNames[this.r]} of ${suiteNames[this.s]}';
+  }
 }
