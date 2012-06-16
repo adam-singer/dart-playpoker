@@ -1,5 +1,4 @@
 #import('dart:html');
-#import('dart:math');
 
 #source('UI.dart');
 #source('GameFunctions.dart');

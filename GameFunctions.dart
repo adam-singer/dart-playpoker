@@ -14,9 +14,13 @@ void serveHand(int player){
 }
 
 Card pickCard(){
-  int randGenerator=new Random();
-  int randomSuite = randGenerator.nextInt(4);
-  int randomRank = randGenerator.nextInt(13);
+
+  int rnd, randomSuite, randomRank;
+  rnd = new Date.now().value;
+  randomSuite = ((rnd/(255*Math.random())).toInt()) %4;
+  rnd = new Date.now().value;
+  randomRank = ((rnd/(255*Math.random())).toInt()) %13;
+      
   Card giveCard = new Card(randomSuite,randomRank);
   return giveCard;
 }
