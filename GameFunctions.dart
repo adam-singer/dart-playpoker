@@ -1,9 +1,12 @@
-List servedCards=new List();
+
 
 void serveHand(int player){
-for(var i = 0;i<5;i++){
-  pickCard();
+  List servedCards=new List();
+  for(var i = 0;i<5;i++){
+    servedCards.add(pickCard());
 }
+  Hand playerHand=new Hand(1,servedCards[0],servedCards[1],servedCards[2],servedCards[3],servedCards[4]);
+  playerHand.lay();
 }
 
 Card pickCard(){
