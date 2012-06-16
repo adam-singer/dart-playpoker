@@ -1,7 +1,7 @@
 #import('dart:html');
 #import('dart:math');
 
-#source('Functions.dart');
+#source('UI.dart');
 #source('GameFunctions.dart');
 #source('Deck.dart');
 #source('Hand.dart');
