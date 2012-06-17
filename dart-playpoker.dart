@@ -10,5 +10,8 @@ var developmentStatus = 'development just started, it does nothing but determini
 final bool debug = true;
 
 void main() {
+  Hand playerHand= new Hand();
+  Hand computerHand= new Hand();
+  
   initialize();
 }

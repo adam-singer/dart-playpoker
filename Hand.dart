@@ -1,17 +1,14 @@
 class Hand {
-  num player;
-  String hand;
-  Card slot1,slot2,slot3,slot4,slot5;
-  Hand(this.player,this.slot1,this.slot2,this.slot3,this.slot4,this.slot5,this.hand){
-    fdb('Hand instance created for player $player');
-    lay();
-    evaluate();
-    }
-  lay(){
+  
+    num player;
+    String hand;
+    Card slot1,slot2,slot3,slot4,slot5;
+    
+    lay(){
     String slotImgPrefix,cardImgPrefix;
     fdb('laying cards for player $player');
     if(player==1){
-       slotImgPrefix='h';
+      slotImgPrefix='h';
       }
     else
     {
