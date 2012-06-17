@@ -1,8 +1,11 @@
 class Hand {
   num player;
+  String hand;
   Card slot1,slot2,slot3,slot4,slot5;
-  Hand(this.player,this.slot1,this.slot2,this.slot3,this.slot4,this.slot5){
+  Hand(this.player,this.slot1,this.slot2,this.slot3,this.slot4,this.slot5,this.hand){
     fdb('Hand instance created for player $player');
+    lay();
+    evaluate();
     }
   lay(){
     String slotImgPrefix,cardImgPrefix;
@@ -16,7 +19,6 @@ class Hand {
      }
    
      String generateCardImgPath(Card whichCard){
-       fdb('generating path for ${whichCard.nameOfCard()}');
      switch(whichCard.s){
        case 0:
          cardImgPrefix='c';
@@ -31,8 +33,7 @@ class Hand {
          cardImgPrefix='s';
          break;
      }  
-     String cardImgPath='cards/$cardImgPrefix${whichCard.r+1}\.png';
-     fdb('Path generated: $cardImgPath');
+     String cardImgPath='cards/$cardImgPrefix${whichCard.r}\.png';
      return cardImgPath;
      }
      
@@ -42,6 +43,70 @@ class Hand {
     document.query('#$slotImgPrefix\4').src=generateCardImgPath(this.slot4);
     document.query('#$slotImgPrefix\5').src=generateCardImgPath(this.slot5);
   }
+  
+  String evaluate(){
+    Map cardsMultiplicity = new Map();
+    List allSlots = [this.slot1.r,this.slot2.r,this.slot3.r,this.slot4.r,this.slot5.r];
+    List listCardsMultiplicity = [];
+    String stringCardsMultiplicity ='';
+    
+    fdb('Starting hand eval...');
+    
+    for (var x = 0; x<allSlots.length; x++) {
+      if(cardsMultiplicity[allSlots[x]] == null){
+        //Create
+        cardsMultiplicity[allSlots[x]]=1;
+      }else{
+        //Update
+        cardsMultiplicity[allSlots[x]]++;
+      }
+    }
+    
+    
+    cardsMultiplicity.forEach((k,v) => listCardsMultiplicity.add(v));
+    listCardsMultiplicity.sort(compare(a,b) {
+      if (a == b) {
+        return 0;
+      } else if (a > b) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+  
+  for(var y = 0; y<listCardsMultiplicity.length;y++){
+    stringCardsMultiplicity='$stringCardsMultiplicity''${listCardsMultiplicity[y]}';
+  }    
+  
+  fdb('Encoded multiplicity: $stringCardsMultiplicity');
+  
+  //Actual logic:
+  switch(stringCardsMultiplicity){
+    case '11111':
+      this.hand='high card OR straight OR flush OR straight flush';
+      break;
+    case '1112':
+      this.hand='Pair';
+      break;
+    case '113':
+      this.hand='Three of a kind';
+      break;
+    case '122':
+      this.hand='Two pairs';
+      break;
+    case '23':
+      this.hand='Fullhouse';
+      break;
+    case '14':
+      this.hand='Four of a kind';
+      break;
+  }
+  
+  updateStatus(this.player,this.hand);
+  
+  }
+    
+  
   
   Hand sort(){}
   int compare(Hand opponent){}

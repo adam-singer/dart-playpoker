@@ -18,18 +18,19 @@ void initialize(){
 
   
   //Serving hand to players
-  serveHand(0);
+  //serveHand(0);
   serveHand(1);
   
   
   document.query('#sortByRank').on.click.add((e) {
-    fdb('rank');
+    fdb('Not implemented yet');
   });
 
   document.query('#sortBySuite').on.click.add((e) {
-    fdb('suite');
+    fdb('Not implemented yet');
   });
   
+
 }
 
 void updateStatus(int player, String status){
