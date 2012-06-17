@@ -1,14 +1,13 @@
 #import('dart:html');
 
 #source('UI.dart');
-#source('GameFunctions.dart');
-#source('Deck.dart');
+#source('PokerEngine.dart');
 #source('Hand.dart');
 #source('Card.dart');
 
 var version = 'N/A';
 var developmentStatus = 'development just started, not working at all!';
-bool debug = true;
+final bool debug = false;
 
 void main() {
   initialize();

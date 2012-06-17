@@ -1,4 +1,8 @@
+
 void initialize(){
+  if(!debug){
+    document.query('#debugBuffer').hidden=true;
+  }
   fdb('Initializing...');
   document.query('#status').innerHTML = '<b>Version:</b> $version || <b>Stage: </b> $developmentStatus || <b>Debug (verbosity): </b>$debug';
 
@@ -10,8 +14,7 @@ void initialize(){
   //Human     player 1;
   updateStatus(0,"Idle");  
   updateStatus(1,"Idle"); 
-  fdb('initializing deck class');
-  Deck mainDeck = new Deck();
+
   //Serving hand to players
   serveHand(1);
 }
@@ -40,3 +43,4 @@ void fdb(String debugMsg){
   document.query('#debug').scrollByLines(9999999);
   }
 }
+
