@@ -11,6 +11,9 @@ void serveHand(int player){
 
   Hand playerHand=new Hand(1,servedCards[0],servedCards[1],servedCards[2],servedCards[3],servedCards[4]);
   playerHand.lay();
+  
+
+  
 }
 
 Card pickCard(){

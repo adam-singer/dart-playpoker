@@ -7,7 +7,7 @@
 
 var version = 'N/A';
 var developmentStatus = 'development just started, not working at all!';
-final bool debug = false;
+final bool debug = true;
 
 void main() {
   initialize();

@@ -15,8 +15,21 @@ void initialize(){
   updateStatus(0,"Idle");  
   updateStatus(1,"Idle"); 
 
+
+  
   //Serving hand to players
+  serveHand(0);
   serveHand(1);
+  
+  
+  document.query('#sortByRank').on.click.add((e) {
+    fdb('rank');
+  });
+
+  document.query('#sortBySuite').on.click.add((e) {
+    fdb('suite');
+  });
+  
 }
 
 void updateStatus(int player, String status){
