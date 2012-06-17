@@ -103,7 +103,7 @@ class Hand {
   }
   
   updateStatus(this.player,this.hand);
-  
+  return this.hand;
   }
     
   
