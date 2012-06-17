@@ -1,10 +1,9 @@
-
 void initialize(){
   if(!debug){
     document.query('#debugBuffer').hidden=true;
   }
   fdb('Initializing...');
-  document.query('#status').innerHTML = '<b>Version:</b> $version || <b>Stage: </b> $developmentStatus || <b>Debug (verbosity): </b>$debug';
+  document.query('#status').innerHTML = '<b>Stage: </b> $developmentStatus<br/><b>Debug (verbosity): </b>$debug<br/>Change <code>bool debug = true</code> to <code>bool debug = false</code> in <code>dart-playpoker.dart:11</code> or viceversa to show/hide custom debug messages and computer\'s cards';
 
   for (var i = 1; i < 6; i++) {
     document.query('#c$i').src = 'img/deck.png';
@@ -14,13 +13,6 @@ void initialize(){
   //Human     player 1;
   updateStatus(0,"Idle");  
   updateStatus(1,"Idle"); 
-
-
-  
-  //Serving hand to players
-  //serveHand(0);
-  serveHand(1);
-  
   
   document.query('#sortByRank').on.click.add((e) {
     fdb('Not implemented yet');
@@ -30,6 +22,9 @@ void initialize(){
     fdb('Not implemented yet');
   });
   
+  document.query('#newHandButton').on.click.add((e){
+    newHand();
+  });
 
 }
 
@@ -57,4 +52,3 @@ void fdb(String debugMsg){
   document.query('#debug').scrollByLines(9999999);
   }
 }
-

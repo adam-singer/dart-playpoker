@@ -8,10 +8,9 @@
   </head>
   <body>
     <h1>Play Poker with Dart!</h1>
-    <p id="status"></p>
     <script type="application/dart" src="dart-playpoker.dart"></script>
     <script src="http://dart.googlecode.com/svn/branches/bleeding_edge/dart/client/dart.js"></script>
-  
+  <br/>
   <div id="table">
 	<div id="computerHand">
 		<div class="playerName"><p>Computer</p></div>
@@ -39,9 +38,11 @@
 	  	</div>
 	  <p>Sort by <button id="sortByRank">Rank</button> <button id="sortBySuite">Suite</button> </p>
 	  </div>
-
+<p><button id="newHandButton">New hand</button></p>
   </div>
   <br/>
+      <div id="status"></div>
+  
 	<div id="debugBuffer">
 	<h3>Debug buffer</h3>
   	<div id="debug"></div>
@@ -51,9 +52,21 @@
   <h3>Roadmap</h3>
   <ul>
   <li>Sorting cards by suite or rank (needed for Hand evaluating)</li>
-  <li>Hands evaluating</li>
+  <li>Hand evaluating:</li>
+  <ul>
+  <li>High card</li>
+  <li><s>Pair</s></li>
+  <li><s>Two pairs</s></li>
+  <li><s>Three of a kind</s></li>
+  <li>Straight</li>
+  <li><s>Fullhouse</s></li>
+  <li>Flush</li>
+  <li><s>Four of a kind</s></li>
+  <li>Straight Flush</li>
+  </ul>
+  <li>Hands comparing</li>
   <li>One-change up to 4 cards in a Hand</li>
-  <li>Serving cards to computer player</li>
+  <li><s>Serving cards to computer player</s></li>
   <li>Computer intelligence</li>
   <li><s>Serve cards without duplicates</s></li>
   <li>Improve user interface</li>

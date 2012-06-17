@@ -1,12 +1,47 @@
 class Hand {
-  
+
     num player;
     String hand;
     Card slot1,slot2,slot3,slot4,slot5;
+    /*
+      Nasty workaround
+    */
+    static String notInDeck = '';
+    
+    serveHand(){
+      List servedCards=new List();
+      List servedPlainCards =  new List();
+
+      while(servedCards.length<5){
+        Card receivedCard = pickCard();
+        if(servedPlainCards.indexOf('${receivedCard.s},${receivedCard.r}')==-1 && !notInDeck.contains('${receivedCard.s},${receivedCard.r}|')){
+          servedPlainCards.add('${receivedCard.s},${receivedCard.r}');
+          servedCards.add(receivedCard);
+          notInDeck='$notInDeck''${receivedCard.s},${receivedCard.r}|';
+          }
+        }
+      this.slot1=servedCards[0];
+      this.slot2=servedCards[1];
+      this.slot3=servedCards[2];
+      this.slot4=servedCards[3];
+      this.slot5=servedCards[4];
+      fdb(notInDeck);
+    }
+
+    Card pickCard(){
+      int rnd, randomSuite, randomRank;
+      rnd = new Date.now().value;
+      randomSuite = ((rnd/(255*Math.random())).toInt()) %4;
+      rnd = new Date.now().value;
+      randomRank = ((rnd/(255*Math.random())).toInt()) %14;
+          if(randomRank==0){randomRank++;}
+      Card giveCard = new Card(randomSuite,randomRank);
+      return giveCard;
+    }
     
     lay(){
     String slotImgPrefix,cardImgPrefix;
-    fdb('laying cards for player $player');
+    fdb('laying cards for player ${this.player}');
     if(player==1){
       slotImgPrefix='h';
       }
@@ -58,8 +93,7 @@ class Hand {
         cardsMultiplicity[allSlots[x]]++;
       }
     }
-    
-    
+
     cardsMultiplicity.forEach((k,v) => listCardsMultiplicity.add(v));
     listCardsMultiplicity.sort(compare(a,b) {
       if (a == b) {
@@ -102,11 +136,8 @@ class Hand {
   updateStatus(this.player,this.hand);
   return this.hand;
   }
-    
-  
-  
+ 
   Hand sort(){}
+
   int compare(Hand opponent){}
-
-
 }
