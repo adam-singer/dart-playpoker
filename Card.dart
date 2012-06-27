@@ -6,7 +6,7 @@ class Card {
 
   String nameOfCard(){
     var suiteNames = ['Clubs','Diamonds','Hearts','Spades'];
-    var rankNames = ['None','Ace', '2', '3', '4', '5', '6', '7','8', '9', '10', 'Jack', 'Queen', 'King'];
+    var rankNames = ['None','None', '2', '3', '4', '5', '6', '7','8', '9', '10', 'Jack', 'Queen', 'King','Ace'];
     return '${rankNames[this.r]} of ${suiteNames[this.s]}';
   }
 }

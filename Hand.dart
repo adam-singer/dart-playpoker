@@ -35,8 +35,8 @@ class Hand {
       randomSuite = ((rnd.millisecondsSinceEpoch/(Math.random())).toInt()) %4;
       while(true){
         rnd = new Date.now();
-        randomRank = ((rnd.millisecondsSinceEpoch/(Math.random())).toInt()) %14;
-        if(randomRank!=0){break;}
+        randomRank = ((rnd.millisecondsSinceEpoch/(Math.random())).toInt()) %15;
+        if(randomRank!=0 && randomRank!=1){break;}
       }
       Card giveCard = new Card(randomSuite,randomRank);
       return giveCard;
@@ -159,7 +159,7 @@ class Hand {
       }else{
     this.hand='Straight';}
     }
-  else if (tmp[0]==1 && tmp[1]==10 && tmp[4]==13){
+  else if (tmp[4]==14 && tmp[0]==2 && tmp[3]==5){
     if(this.isFlush()==true){
       this.hand='Straight Flush';
       }else{
