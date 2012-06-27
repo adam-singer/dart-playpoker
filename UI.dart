@@ -14,9 +14,8 @@ void initialize(){
   updateStatus(0,"Idle");  
   updateStatus(1,"Idle"); 
   
-  document.query('#sortByRank').on.click.add((e) {
-    fdb('Not implemented yet');
-  });
+
+
 
   document.query('#sortBySuite').on.click.add((e) {
     fdb('Not implemented yet');

@@ -117,7 +117,8 @@ class Hand {
   //Actual logic:
   switch(stringCardsMultiplicity){
     case '11111':
-      this.hand='high card OR straight OR flush OR straight flush';
+      //this.hand='high card OR straight OR flush OR straight flush';
+      this.allOnes();
       break;
     case '1112':
       this.hand='Pair';
@@ -140,7 +141,59 @@ class Hand {
   return this.hand;
   }
  
-  Hand sort(){}
+  void allOnes(){
+    List tmp=[this.slot1.r,this.slot2.r,this.slot3.r,this.slot4.r,this.slot5.r];
+    tmp.sort(compare(a,b) {
+      if (a == b) {
+        return 0;
+      } else if (a > b) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+  
+  if(tmp[4]==tmp[0]+4){
+    if(this.isFlush()==true){
+      this.hand='Straight Flush';
+      }else{
+    this.hand='Straight';}
+    }
+  else if (tmp[0]==1 && tmp[1]==10 && tmp[4]==13){
+    if(this.isFlush()==true){
+      this.hand='Straight Flush';
+      }else{
+    this.hand='Straight';
+    }
+    }
+  
+
+  else {
+    if (this.isFlush()==true){
+      this.hand='Flush';
+      
+    }
+    else{
+    this.hand='High card';
+    }
+  }
+  
+  }
+  
+  bool isFlush(){
+    if(this.slot1.s==this.slot2.s){
+      if(this.slot2.s==this.slot3.s){
+        if(this.slot3.s==this.slot4.s){
+          if(this.slot4.s==this.slot5.s){
+            return true;
+            }else{
+              return false;}
+          }else{return false;}
+        }else{return false;}
+      }else{return false;}
+  }
+  
+  void sort(){}
 
   int compare(Hand opponent){}
 }

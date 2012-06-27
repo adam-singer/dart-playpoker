@@ -12,5 +12,7 @@ bool debug = true;
 
 void main() {
   initialize();
+
   newHand();
+  //unitTestNewHand();
 }
