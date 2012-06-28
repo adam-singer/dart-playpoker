@@ -142,8 +142,8 @@ class Hand {
   }
  
   void allOnes(){
-    List tmp=[this.slot1.r,this.slot2.r,this.slot3.r,this.slot4.r,this.slot5.r];
-    tmp.sort(compare(a,b) {
+    List R=[this.slot1.r,this.slot2.r,this.slot3.r,this.slot4.r,this.slot5.r];
+    R.sort(compare(a,b) {
       if (a == b) {
         return 0;
       } else if (a > b) {
@@ -153,13 +153,13 @@ class Hand {
       }
     });
   
-  if(tmp[4]==tmp[0]+4){
+  if(R[4]==R[0]+4){
     if(this.isFlush()==true){
       this.hand='Straight Flush';
       }else{
     this.hand='Straight';}
     }
-  else if (tmp[4]==14 && tmp[0]==2 && tmp[3]==5){
+  else if (R[4]==14 && R[0]==2 && R[3]==5){
     if(this.isFlush()==true){
       this.hand='Straight Flush';
       }else{
