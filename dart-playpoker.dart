@@ -1,4 +1,5 @@
 #import('dart:html');
+#import('dart:math');
 
 #source('UI.dart');
 #source('PokerEngine.dart');
@@ -6,11 +7,13 @@
 #source('Card.dart');
 
 var version = '';
-var developmentStatus = 'It actually does nothing but determining some hand values (see #Roadmap for details)';
+var developmentStatus = 'lolol It actually does nothing but determining some hand values (see #Roadmap for details)';
 
 bool debug = true;
 
 void main() {
+
+
   initialize();
 
   newHand();

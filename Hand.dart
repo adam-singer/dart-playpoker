@@ -30,14 +30,15 @@ class Hand {
 
     Card pickCard(){
       int  randomSuite, randomRank;
-      var rnd;
-      rnd = new Date.now();
-      randomSuite = ((rnd.millisecondsSinceEpoch/(Math.random())).toInt()) %4;
+      var rnd = new Random();
+      randomSuite = rnd.nextInt(4);
       while(true){
-        rnd = new Date.now();
-        randomRank = ((rnd.millisecondsSinceEpoch/(Math.random())).toInt()) %15;
-        if(randomRank!=0 && randomRank!=1){break;}
+        randomRank = rnd.nextInt(15);
+        if(randomRank>1){
+          break;
+        }
       }
+
       Card giveCard = new Card(randomSuite,randomRank);
       return giveCard;
     }
@@ -80,10 +81,8 @@ class Hand {
   }
   
   String evaluate(){
-    Map cardsMultiplicity = new Map();
+    Map<int,int> cardsMultiplicity = new Map();
     List allSlots = [this.slot1.r,this.slot2.r,this.slot3.r,this.slot4.r,this.slot5.r];
-    List listCardsMultiplicity = [];
-    String stringCardsMultiplicity ='';
     
     fdb('Starting hand eval...');
     
@@ -97,42 +96,32 @@ class Hand {
       }
     }
 
-    cardsMultiplicity.forEach((k,v) => listCardsMultiplicity.add(v));
-    listCardsMultiplicity.sort(compare(a,b) {
-      if (a == b) {
-        return 0;
-      } else if (a > b) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
-  
-  for(var y = 0; y<listCardsMultiplicity.length;y++){
-    stringCardsMultiplicity='$stringCardsMultiplicity''${listCardsMultiplicity[y]}';
-  }    
-  
-  fdb('Encoded multiplicity: $stringCardsMultiplicity');
+    int encodedMultiplicity = 0;
+    for( var x = 0; x<cardsMultiplicity.getValues().length; x++){
+      encodedMultiplicity+=pow(cardsMultiplicity.getValues()[x],2);
+    }
+
+    fdb('Encoded multiplicity: $encodedMultiplicity');
   
   //Actual logic:
-  switch(stringCardsMultiplicity){
-    case '11111':
+  switch(encodedMultiplicity){
+    case 5:
       //this.hand='high card OR straight OR flush OR straight flush';
       this.allOnes();
       break;
-    case '1112':
+    case 7:
       this.hand='Pair';
       break;
-    case '113':
+    case 11:
       this.hand='Three of a kind';
       break;
-    case '122':
+    case 9:
       this.hand='Two pairs';
       break;
-    case '23':
+    case 13:
       this.hand='Fullhouse';
       break;
-    case '14':
+    case 17:
       this.hand='Four of a kind';
       break;
   }

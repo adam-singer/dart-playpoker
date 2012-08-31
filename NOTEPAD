@@ -1,0 +1,15 @@
+  document.query('#h1').on.click.add((e){
+    fdb(playerHand.slot1.r);
+    });
+  document.query('#h2').on.click.add((e){
+    // code
+    });
+  document.query('#h3').on.click.add((e){
+    // code
+    });
+  document.query('#h4').on.click.add((e){
+    // code
+    });
+  document.query('#h5').on.click.add((e){
+    // code
+    });
